@@ -1,0 +1,20 @@
+#!/bin/sh
+# Convert headers from a MANTES mail to RFC822-style
+# MANTES is an file management system running on an IBM mainframe under MVS,
+# which was used from the 1970s through the 2000s.
+# The input to this program is expected to be a terminal log of a single
+# message as displayed in MANTES with extraneous lines removed.
+
+# The copy section is to copy the body of the message verbatim.
+
+tr -d '\015' | \
+sed -E \
+    -e '/^$/{:copy; N; b copy}' \
+    -e '/^Message .*[0-9]/d' \
+    -e '/^Send-date:/s/UTC([-+])/\1/' \
+    -e 's/^Send-date:/Date:/' \
+    -e '/^Delivery-date:/s/UTC([-+])/\1/' \
+    -e 's/^Delivery-date:/X-Delivery-Date:/' \
+    -e 's/^Originator:/Sender:/' \
+    -e '/^((Message-ID:)|(In-Reply-To:)).*[^>]$/s/: */: </' \
+    -e '/^((Message-ID:)|(In-Reply-To:)).*[^>]$/s/$/>/'
