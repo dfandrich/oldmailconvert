@@ -30,7 +30,7 @@ added to the message, which otherwise would show no indication of the receiver.
 
 Usage:
 
-  compuservecvt -t 77777,111 <old.txt > new.eml
+  compuservecvt -t 77777,111 < old.txt > new.eml
 
 ### mantescvt
 
@@ -54,7 +54,7 @@ messages when required, as it required by the mbox format.
 
 Usage:
 
-  uupccvt old.mbo > new.mbox
+  uupccvt < old.mbo > new.mbox
 
 ## Installation
 
@@ -85,7 +85,7 @@ messages into the other style.
 
 Daniel Fandrich <dan@coneharvesters.com>
 
-This program is Copyright (C) 2021 Daniel Fandrich. It is distributed under the
+This program is Copyright (C) 2021–2022 Daniel Fandrich. It is distributed under the
 terms of the GNU General Public License as published by the Free Software
 Foundation; either version 2 of the License, or (at your option) any later
 version.
