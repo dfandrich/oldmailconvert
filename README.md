@@ -31,6 +31,11 @@ command-line parameter is mandatory: "-t nnnnn,nnn" which specifies the
 CompuServe user ID that received the message. This is so a To: line can be
 added to the message, which otherwise would show no indication of the receiver.
 
+CompuServe was an early time-share and information system that began offering
+access to the consumer public in 1979, and dominated the field in the 1980s
+before competitors like AOL entered and Internet access became publicly
+available.
+
 Usage:
 
   compuservecvt -t 77777,111 < old.txt > new.eml
@@ -63,11 +68,15 @@ Usage:
 
 ### mantescvt
 
-Converts MANTES messages. MANTES was a file management system running on an IBM
-mainframe under MVS which was used from the 1970s through the 2000s.  The input
-to this program is expected to be a terminal log of a single message as
-displayed in MANTES with extraneous lines removed.  A single message is passed
-in to stdin and the converted messages is written to stdout.
+Converts MANTES messages.  The input to this program is expected to be a
+terminal log of a single message as displayed in MANTES with extraneous lines
+removed.  A single message is passed in to stdin and the converted messages is
+written to stdout.
+
+MANTES was a file management system running on an IBM mainframe under MVS which
+was used from the 1970s through the 2000s. It was developed at the University
+of Manitoba and used at a number of universities and companies in Canada and
+around the world.
 
 Usage:
 
@@ -75,11 +84,15 @@ Usage:
 
 ### uupccvt
 
-Converts a message mailbox created by UUPC/extended. This was a uucp package
-for MS-DOS systems that used a custom mailbox format somewhat reminiscent of
-MMDF.  A single message mailbox is passed in to stdin and an mbox mailbox is
-written to stdout.  The normal "From" encoding is performed on the body of
-messages when required, as it required by the mbox format.
+Converts a message mailbox created by UUPC/extended, which is a custom mailbox
+format somewhat reminiscent of MMDF.  A single message mailbox is passed in to
+stdin and an mbox mailbox is written to stdout.  The normal "From" encoding is
+performed on the body of messages when required, as it required by the mbox
+format.
+
+UUPC/extended was a uucp package for MS-DOS systems developed in 1985. It
+provided a uucp-style suite of programs for mail, USENET news and file transfer
+over dial-up modems that ran on DOS systems.
 
 Usage:
 
@@ -99,6 +112,9 @@ Build and install the latest release of code from Github with:
 The regression test suite can be run with the command:
 
   python3 setup.py test
+
+I've found some tests related to dates fail in one Python 3.8.14 environment
+because dateutil seems to improperly handle time zones in that version.
 
 ## Other programs
 
