@@ -17,6 +17,7 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+#
 # Each e-mail is expected to be in a file of its own, with the contents of the
 # headers and mail as would be logged by a terminal emulator while using the
 # command-line CompuServe mail reader to read each message.

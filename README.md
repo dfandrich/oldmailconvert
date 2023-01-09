@@ -1,10 +1,13 @@
 # oldmailconvert
 
-This is a set of scripts for converting mail from various historic mail formats
-into RFC822-style messages.
+This is a set of scripts for converting e-mail from various historic mail
+formats into RFC822-style messages.  These were written to convert some old
+message archives into an format suitable for indexing and reading using modern
+e-mail management software.
 
-These were written to convert some old message archives into an format suitable
-for indexing and reading using modern software.
+The output of each script is one of a number of possible formats, but each is
+supported by modern software. The results can later be easily converted into
+a consistent format if needed (see the *Other programs* section below).
 
 ## Programs
 
@@ -31,6 +34,32 @@ added to the message, which otherwise would show no indication of the receiver.
 Usage:
 
   compuservecvt -t 77777,111 < old.txt > new.eml
+
+### maillogcvt
+
+Converts a big file with multiple mail messages into an MMDF mailbox. The file
+may have been created by logging a mail reading session on a terminal, by
+manually concatenating mail messages into a text file, or through some other ad
+hoc means.  This script is likely to need some modification for it to work in
+your specific case.
+
+The input file is just a text file with a bunch of e-mails concatenated,
+with some standard headers (like To:, From:, Subject:) at the start of each
+message. It tries to detect forwarded messages and keep them attached to the
+right message, since forwarded with their headers can look like an entirely new
+message otherwise.  This is tricky business, and can easily go wrong. You may
+need to add some of the headers found in your messages to the script in order
+for it to split messages on the correct boundaries.
+
+Everything in the input is assumed to be part of a message and nothing is
+thrown out, which can result things that aren't messages in the output file or
+lines that aren't really part of an MMDF message (like "From " lines). GIGO.
+You may need to iterate a few times on your input files to either tweak the
+script or preprocess your input before finding a satisfactory result.
+
+Usage:
+
+  maillogcvt < old.txt > new.mmdf
 
 ### mantescvt
 
@@ -81,11 +110,14 @@ MMDF, Maildir and MH mail, one simple way is to use the Mutt mailer
 (http://mutt.org/), by loading one style of mailbox and mass copying all the
 messages into the other style.
 
+A simple way of turning a plain RFC822 message into a mailbox is to pipe it to
+formail, which is part of procmail (https://www.procmail.org/).
+
 ## Author
 
 Daniel Fandrich <dan@coneharvesters.com>
 
-This program is Copyright (C) 2021–2022 Daniel Fandrich. It is distributed under the
+This program is Copyright (C) 2021–2023 Daniel Fandrich. It is distributed under the
 terms of the GNU General Public License as published by the Free Software
 Foundation; either version 2 of the License, or (at your option) any later
 version.
