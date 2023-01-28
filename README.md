@@ -103,7 +103,9 @@ Usage:
 The latest source code can be obtained from
 https://github.com/dfandrich/oldmailconvert/
 
-The scripts are written in a mix of Python and Bourne shell.
+The scripts are written in a mix of Python and Bourne shell. They use some
+standard POSIX utilities, but assume some of them have GNU extensions
+available.
 
 Build and install the latest release of code from Github with:
 
