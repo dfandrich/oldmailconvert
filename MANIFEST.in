@@ -1,0 +1,2 @@
+include *_test.py
+include testdata/*
