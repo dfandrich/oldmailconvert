@@ -1,2 +1,2 @@
-include *_test.py
+include tests.py *_test.py
 include testdata/*
