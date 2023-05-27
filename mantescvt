@@ -9,7 +9,7 @@
 
 tr -d '\015' | \
 sed -E \
-    -e '/^$/{:copy; N; b copy}' \
+    -e '/^$/{:copy;N;bcopy' -e '}' \
     -e '/^Message .*[0-9]/d' \
     -e '/^Send-date:/s/UTC([-+])/\1/' \
     -e 's/^Send-date:/Date:/' \

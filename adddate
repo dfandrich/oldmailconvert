@@ -1,11 +1,11 @@
-#!/bin/bash
+#!/bin/sh
 # Add a Date: header to an RFC822 message based on the file date and time
 set -e
-if [[ -z "$1" || -n "$2" ]]; then
+if [ -z "$1" || -n "$2" ]; then
     echo Usage: $0 messagefile
     exit 1
 fi
-if [[ -n "$(sed -n -e '1,/^$/s/^Date:/EXISTING/pi' "$1")" ]]; then
+if [ -n "$(sed -n -e '1,/^$/s/^Date:/EXISTING/pi' "$1")" ]; then
     echo Warning: Date: line already exists 1>&2
 else
     printf 'Date: '
