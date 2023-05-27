@@ -13,8 +13,8 @@ a consistent format if needed (see the *Other programs* section below).
 
 ### adddate
 
-Adds a Date: line to an existing RFC822 message with the modified time of the
-message file. The script takes a file name as an argument and writes the
+Adds a Date: line to an existing RFC822 message using the modification time of
+the message file. The script takes a file name as an argument and writes the
 modified message to stdout. If the message already has a Date: field, it is
 left untouched.
 
