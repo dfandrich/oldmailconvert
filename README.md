@@ -125,8 +125,8 @@ To convert Fidonet messages, try my program dumpfidomsg
 
 If you're more interested in converting between the contemporary formats mbox,
 MMDF, Maildir and MH mail, one simple way is to use the Mutt mailer
-(http://mutt.org/), by loading one style of mailbox and mass copying all the
-messages into the other style.
+(http://mutt.org/), by reading from one style of mailbox, tagging all the
+messages, then mass saving them all into an empty mailbox of the other style.
 
 A simple way of turning a plain RFC822 message into a mailbox is to pipe it to
 formail, which is part of procmail (https://www.procmail.org/).
