@@ -2,6 +2,7 @@
 
 import unittest
 
+
 def tests():
     return unittest.TestLoader().discover('.', pattern='*_test.py')
 

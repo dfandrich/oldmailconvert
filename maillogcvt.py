@@ -26,22 +26,26 @@
 # perfect job. The input file may need to be manually tweaked to provide the
 # clues this script needs to split messages correctly.
 
-import sys
 import re
+import sys
 
 
 MMDFSEP = b'\x01\x01\x01\x01\n'
-FIRSTHEADERRE = re.compile(b'(^(Date|To|From|Mime-Version|Subject|Cc|Sender|X-Sender|X-Authentication-Warning|X-Originating-Ip|Resent-Date|Received):)|(^From .)', re.I)
+FIRSTHEADERRE = re.compile(
+    rb'(^(Date|To|From|Mime-Version|Subject|Cc|Sender|X-Sender|X-Authentication-Warning'
+    rb'|X-Originating-Ip|Resent-Date|Received):)|(^From .)', re.I)
 # Supports continuation headers starting with a space, too
-HEADERRE = re.compile(b'^([a-zA-Z][-a-zA-Z0-9]+:)|^(\s+\S)', re.A)
-FORWARDRE = re.compile(b'^-* *Forwarded message')
+HEADERRE = re.compile(rb'^([a-zA-Z][-a-zA-Z0-9]+:)|^(\s+\S)', re.A)
+FORWARDRE = re.compile(rb'^-* *Forwarded message')
 FORWARDING_LINES_COPIED = 2
+
+DEBUG = False  # True to show debugging logs
 
 
 def debug(s):
-   # Write to the same buffer as the message to avoid different flushing times
-   #sys.stdout.buffer.write(s.encode()+b'\n')
-   pass
+    # Write to the same buffer as the message to avoid different flushing times
+    if DEBUG:
+        sys.stdout.buffer.write(s.encode() + b'\n')
 
 
 def main():

@@ -21,14 +21,15 @@
 # turn SYNTHESIZE_FROM into a --sent flag, useful for sent mail
 # use better logging
 
-import dateutil.parser
 import email
 import email.utils
 import re
 import sys
 import time
-
 from typing import MutableSequence, TextIO
+
+import dateutil.parser
+
 
 # Create a From line to separate messages if one doesn't already exist
 # This is typically the case for sent mailboxes

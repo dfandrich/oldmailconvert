@@ -36,11 +36,12 @@
 #  To: [12345,678]
 # at the end of message and automatically turn that into a To: line in the header
 
-import dateutil.parser
-import dateutil.tz
 import re
 import sys
 from typing import List, TextIO
+
+import dateutil.parser
+import dateutil.tz
 
 CIS_DOMAIN = 'compuserve.com'
 
