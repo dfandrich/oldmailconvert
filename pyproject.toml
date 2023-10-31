@@ -1,3 +1,59 @@
 [build-system]
-requires = ["setuptools>=42", "wheel"]
+requires = [
+    "setuptools>=61.2",
+]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "oldmailconvert"
+description = "Converts e-mail from UUPC/extended, CompuServe, MANTES et. al. to RFC822 format"
+version = "3-dev"
+readme = "README.md"
+authors = [{name = "Dan Fandrich", email = "dan@coneharvesters.com"}]
+license = {text = "GPLv2+"}
+classifiers = [
+    "Programming Language :: Python",
+    "License :: OSI Approved :: GNU General Public License v2 or later (GPLv2+)",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: Users",
+    "Intended Audience :: End Users/Desktop",
+    "Natural Language :: English",
+    "Topic :: Communications :: Email",
+    "Typing :: Typed",
+]
+requires-python = ">= 3.8"
+dependencies = ["python-dateutil"]
+
+[project.urls]
+Homepage = "https://github.com/dfandrich/oldmailconvert"
+Repository = "https://github.com/dfandrich/oldmailconvert.git"
+
+[project.scripts]
+compuservecvt = "compuservecvt:main"
+maillogcvt = "maillogcvt:main"
+uupccvt = "uupccvt:main"
+
+[tool.setuptools]
+py-modules = [
+    "compuservecvt",
+    "maillogcvt",
+    "uupccvt",
+]
+script-files = [
+    "adddate",
+    "mantescvt",
+]
+license-files = ["COPYING"]
+include-package-data = false
+
+[tool.flake8]
+max-line-length = "100"
+ignore = "E741"
