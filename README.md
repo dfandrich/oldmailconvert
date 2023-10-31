@@ -115,6 +115,10 @@ The regression test suite can be run with the command:
 
   python3 setup.py test
 
+or, if pytest is installed, simply:
+
+  pytest
+
 I've found some tests related to dates fail in one Python 3.8.14 environment
 because dateutil seems to improperly handle time zones in that version.
 
