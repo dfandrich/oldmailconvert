@@ -54,6 +54,7 @@ script-files = [
 license-files = ["COPYING"]
 include-package-data = false
 
+# flake8-pyproject must be installed for flake8 to use these settings
 [tool.flake8]
-max-line-length = "100"
-ignore = "E741"
+max-line-length = 100
+ignore = ["E741"]
