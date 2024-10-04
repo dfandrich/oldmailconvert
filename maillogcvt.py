@@ -78,7 +78,7 @@ def main():
                     #   mode to copy remainder of header verbatim, without
                     #   creating a new message
                     sys.stdout.buffer.write(l)
-                    for n in range(FORWARDING_LINES_COPIED):
+                    for _ in range(FORWARDING_LINES_COPIED):
                         l = intext.readline()
                         if l:
                             sys.stdout.buffer.write(l)

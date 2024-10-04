@@ -73,7 +73,7 @@ class UupcMboxConverter:
             self.frm += 1
             eml = email.message_from_string('\n'.join(msg))
             t = dateutil.parser.parse(eml['date'])
-            (human, addr) = email.utils.parseaddr(eml['from'])
+            human, addr = email.utils.parseaddr(eml['from'])
             fr = 'From %s %s' % (addr, time.asctime(t.utctimetuple()))
             msg.insert(0, fr)
         else:

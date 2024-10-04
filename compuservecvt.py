@@ -50,12 +50,12 @@ CRLF = '\x0d\x0a'
 FROM_RE = re.compile(r'^From: +(.*) +\[(\d+,\d+)\]$')
 
 TIMEZONE_INFO = {
-    "EST": dateutil.tz.gettz("America/New_York"),
-    "EDT": dateutil.tz.gettz("America/New_York"),
-    "CST": dateutil.tz.gettz("America/Chicago"),
-    "CDT": dateutil.tz.gettz("America/Chicago"),
-    "PST": dateutil.tz.gettz("America/Los_Angeles"),
-    "PDT": dateutil.tz.gettz("America/Los_Angeles"),
+    'EST': dateutil.tz.gettz('America/New_York'),
+    'EDT': dateutil.tz.gettz('America/New_York'),
+    'CST': dateutil.tz.gettz('America/Chicago'),
+    'CDT': dateutil.tz.gettz('America/Chicago'),
+    'PST': dateutil.tz.gettz('America/Los_Angeles'),
+    'PDT': dateutil.tz.gettz('America/Los_Angeles'),
 }
 
 
@@ -97,7 +97,7 @@ def ConvertMessage(infile: TextIO, outfile: TextIO, to_addr: str):
 
             elif l.startswith('Date:'):
                 d = dateutil.parser.parse(l[6:], tzinfos=TIMEZONE_INFO)
-                l = 'Date: %s' % d.strftime("%a, %d %b %Y %H:%M:%S %z")
+                l = 'Date: %s' % d.strftime('%a, %d %b %Y %H:%M:%S %z')
 
             elif l.startswith('Reply to: '):
                 l = 'Subject: Re: %s' % l[10:]

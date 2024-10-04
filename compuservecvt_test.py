@@ -30,7 +30,7 @@ class TestCompuserveCvt(unittest.TestCase):
         with open(infn, 'r') as inputfile, \
             mock.patch('compuservecvt.sys.stdin', new=inputfile), \
                 mock.patch('compuservecvt.sys.stdout', new=outputfile):
-            compuservecvt.ConvertCompuserveMail('. -t 77777.111'.split())
+            compuservecvt.ConvertCompuserveMail(['.', '-t', '77777.111'])
 
         with outputfile:
             outputfile.seek(0)
