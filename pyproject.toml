@@ -7,7 +7,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "oldmailconvert"
 description = "Converts e-mail from UUPC/extended, CompuServe, MANTES et. al. to RFC822 format"
-version = "3-dev"
+version = "3"
 readme = "README.md"
 authors = [{name = "Dan Fandrich", email = "dan@coneharvesters.com"}]
 license = {text = "GPLv2+"}

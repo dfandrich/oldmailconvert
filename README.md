@@ -139,7 +139,7 @@ formail, which is part of procmail (https://www.procmail.org/).
 
 Daniel Fandrich <dan@coneharvesters.com>
 
-This program is Copyright (C) 2021–2023 Daniel Fandrich. It is distributed under the
+This program is Copyright (C) 2021–2025 Daniel Fandrich. It is distributed under the
 terms of the GNU General Public License as published by the Free Software
 Foundation; either version 2 of the License, or (at your option) any later
 version.
