@@ -87,5 +87,5 @@ include-package-data = false
 # flake8-pyproject must be installed for flake8 to use these settings
 [tool.flake8]
 max-line-length = 100
-ignore = ["E741", "D100", "D101", "D102", "D103", "PAR101"]
+ignore = ["E741", "D100", "D101", "D102", "D103", "INP001", "PAR101"]
 blanks-before-imports = 1
