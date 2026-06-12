@@ -29,13 +29,12 @@
 import re
 import sys
 
-
 MMDFSEP = b'\x01\x01\x01\x01\n'
 FIRSTHEADERRE = re.compile(
     rb'(^(Date|To|From|Mime-Version|Subject|Cc|Sender|X-Sender|X-Authentication-Warning'
-    rb'|X-Originating-Ip|Resent-Date|Received):)|(^From .)', re.I)
+    rb'|X-Originating-Ip|Resent-Date|Received):)|(^From .)', re.IGNORECASE)
 # Supports continuation headers starting with a space, too
-HEADERRE = re.compile(rb'^([a-zA-Z][-a-zA-Z0-9]+:)|^(\s+\S)', re.A)
+HEADERRE = re.compile(rb'^([a-zA-Z][-a-zA-Z0-9]+:)|^(\s+\S)', re.ASCII)
 FORWARDRE = re.compile(rb'^-* *Forwarded message')
 FORWARDING_LINES_COPIED = 2
 

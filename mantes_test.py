@@ -25,7 +25,7 @@ class TestMantesCvt(unittest.TestCase):
     def run_inout_test(self, infn, outfn):
         with open(infn, 'r') as inputfile:
             p = subprocess.run(
-                './mantescvt', input=inputfile.read(), capture_output=True, text=True)
+                './mantescvt', input=inputfile.read(), capture_output=True, text=True, check=True)
 
         with open(outfn, 'r') as e:
             expecteddata = e.read()

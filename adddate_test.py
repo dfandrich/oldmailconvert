@@ -37,7 +37,7 @@ class TestAdddateCvt(unittest.TestCase):
             os.utime(inputfile.name, times=(expected_time, expected_time))
             p = subprocess.run(
                 ['./adddate', inputfile.name],
-                capture_output=True, text=True, env={'TZ': 'UTC+4'})
+                capture_output=True, text=True, env={'TZ': 'UTC+4'}, check=True)
 
             with open(outfn, 'r') as e:
                 expecteddata = e.read()

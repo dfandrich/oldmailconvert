@@ -109,7 +109,7 @@ def ConvertMessage(infile: TextIO, outfile: TextIO, to_addr: str):
                 if got_to:
                     sys.stderr.write('Warning: two To: lines\n')
                 got_to = True
-                l = re.sub('^To: *internet: *', 'To: ', l, flags=re.I)
+                l = re.sub('^To: *internet: *', 'To: ', l, flags=re.IGNORECASE)
 
             elif l == '':
                 headers = False

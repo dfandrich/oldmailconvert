@@ -30,7 +30,6 @@ from typing import MutableSequence, TextIO
 
 import dateutil.parser
 
-
 # Create a From line to separate messages if one doesn't already exist
 # This is typically the case for sent mailboxes
 SYNTHESIZE_FROM = True
@@ -73,7 +72,7 @@ class UupcMboxConverter:
             self.frm += 1
             eml = email.message_from_string('\n'.join(msg))
             t = dateutil.parser.parse(eml['date'])
-            human, addr = email.utils.parseaddr(eml['from'])
+            _human, addr = email.utils.parseaddr(eml['from'])
             fr = 'From %s %s' % (addr, time.asctime(t.utctimetuple()))
             msg.insert(0, fr)
         else:
