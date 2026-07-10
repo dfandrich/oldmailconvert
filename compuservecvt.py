@@ -36,9 +36,11 @@
 #  To: [12345,678]
 # at the end of message and automatically turn that into a To: line in the header
 
+from __future__ import annotations
+
 import re
 import sys
-from typing import List, TextIO
+from typing import TextIO
 
 import dateutil.parser
 import dateutil.tz
@@ -117,7 +119,7 @@ def ConvertMessage(infile: TextIO, outfile: TextIO, to_addr: str):
         outfile.write(l + '\n')
 
 
-def ConvertCompuserveMail(argv: List[str]):
+def ConvertCompuserveMail(argv: list[str]):
     # Use the iso-8859-1 encoding in order to pass 8-bit clean data
     sys.stdin.reconfigure(encoding='iso-8859-1')   # pytype: disable=attribute-error
     sys.stdout.reconfigure(encoding='iso-8859-1')  # pytype: disable=attribute-error
