@@ -64,7 +64,7 @@ TIMEZONE_INFO = {
 def CisToDomain(cis_addr: str) -> str:
     """Convert a CompuServe numeric address into a domain address."""
     cis_addr = cis_addr.replace(',', '.')
-    return '%s@%s' % (cis_addr, CIS_DOMAIN)
+    return f'{cis_addr}@{CIS_DOMAIN}'
 
 
 def ConvertMessage(infile: TextIO, outfile: TextIO, to_addr: str):
@@ -87,22 +87,22 @@ def ConvertMessage(infile: TextIO, outfile: TextIO, to_addr: str):
                     sys.stderr.write('Warning: To: line already exists; not adding a new one\n')
                 else:
                     # Add a To: line at this point because there isn't one otherwise
-                    outfile.write('To: %s\n' % to_addr)
+                    outfile.write(f'To: {to_addr}\n')
                     got_to = True
 
                 addr = FROM_RE.match(l)
                 if addr:
                     cis = CisToDomain(addr.group(2))
-                    l = 'From: %s <%s>' % (addr.group(1), cis)
+                    l = f'From: {addr.group(1)} <{cis}>'
                 else:
-                    sys.stderr.write('Warning: From: line could not be converted: %s\n' % l)
+                    sys.stderr.write(f'Warning: From: line could not be converted: {l}\n')
 
             elif l.startswith('Date:'):
                 d = dateutil.parser.parse(l[6:], tzinfos=TIMEZONE_INFO)
-                l = 'Date: %s' % d.strftime('%a, %d %b %Y %H:%M:%S %z')
+                l = f'Date: {d.strftime("%a, %d %b %Y %H:%M:%S %z")}'
 
             elif l.startswith('Reply to: '):
-                l = 'Subject: Re: %s' % l[10:]
+                l = f'Subject: Re: {l[10:]}'
                 if got_subj:
                     sys.stderr.write('Warning: two Subject: lines\n')
                 got_subj = True
@@ -124,7 +124,7 @@ def ConvertCompuserveMail(argv: list[str]):
     sys.stdin.reconfigure(encoding='iso-8859-1')   # pytype: disable=attribute-error
     sys.stdout.reconfigure(encoding='iso-8859-1')  # pytype: disable=attribute-error
     if len(argv) < 3 or argv[1] != '-t':
-        sys.stderr.write('Usage: %s -t <CIS address>\n' % argv[0])
+        sys.stderr.write(f'Usage: {argv[0]} -t <CIS address>\n')
         sys.exit(1)
     to_addr = argv[2]
     ConvertMessage(sys.stdin, sys.stdout, to_addr)

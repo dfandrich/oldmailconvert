@@ -60,20 +60,20 @@ class UupcMboxConverter:
         """
         for i, s in enumerate(msg):
             if i and s.startswith('From '):
-                warning('Warning: Line needed to be escaped: %s' % s)
+                warning(f'Warning: Line needed to be escaped: {s}')
                 msg[i] = '>' + s
 
     def WriteMsg(self, msg: MutableSequence[str]):
         fr = msg[0]
         if not fr.startswith('From '):
             if not SYNTHESIZE_FROM:
-                error('Unexpected first line on #%d: %s' % (self.msgs, fr))
+                error(f'Unexpected first line on #{self.msgs}: {fr}')
             # No From line found; create one
             self.frm += 1
             eml = email.message_from_string('\n'.join(msg))
             t = dateutil.parser.parse(eml['date'])
             _human, addr = email.utils.parseaddr(eml['from'])
-            fr = 'From %s %s' % (addr, time.asctime(t.utctimetuple()))
+            fr = f'From {addr} {time.asctime(t.utctimetuple())}'
             msg.insert(0, fr)
         else:
             m = FROM_RE.match(fr)
@@ -110,9 +110,9 @@ class UupcMboxConverter:
         if msg:
             self.WriteMsg(msg)
 
-        print('Messages copied:  %d' % self.msgs, file=sys.stderr)
-        print('Dates converted:  %d' % self.cvt, file=sys.stderr)
-        print('From lines added: %d' % self.frm, file=sys.stderr)
+        print(f'Messages copied:  {self.msgs}', file=sys.stderr)
+        print(f'Dates converted:  {self.cvt}', file=sys.stderr)
+        print(f'From lines added: {self.frm}', file=sys.stderr)
 
 
 def main():

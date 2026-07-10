@@ -57,6 +57,7 @@ dev = [
     "flake8-quotes",
     "flake8-raise",
     "flake8-return",
+    "flake8-sfs",
     "flake8-simplify",
     "flake8-super",
     "flake8-warnings",
@@ -88,5 +89,8 @@ include-package-data = false
 # flake8-pyproject must be installed for flake8 to use these settings
 [tool.flake8]
 max-line-length = 100
-ignore = ["E741", "D100", "D101", "D102", "D103", "INP001", "PAR101"]
+ignore = ["E741", "D100", "D101", "D102", "D103", "INP001", "PAR101", "WOT001", "SFS301"]
 blanks-before-imports = 1
+
+[tool.flake8.known-modules]
+oldmailconvert = ["compuservecvt", "maillogcvt", "uupccvt"]
